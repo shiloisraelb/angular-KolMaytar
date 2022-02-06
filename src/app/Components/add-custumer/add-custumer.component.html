@@ -1,0 +1,72 @@
+<div class="row"style="position: relative;" class="pos">
+    <div class="col-12">
+      <!--Customer Enter Details Email Name Identity Password and password verification-->
+      <form class="form-group"  [formGroup]="usersFormGroup" >
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label style="float:right;" for="email"><span class="text-danger">*</span>אמייל</label>
+            <input formControlName="email" class="form-control" [ngClass]="{
+                'is-invalid': usersFormGroup.get('email')?.errors && usersFormGroup.get('email')?.dirty
+              }" required minlength="2"  required email name="email" id="email" type="email">
+            <div [hidden]="!usersFormGroup.get('email')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס אימייל
+            </div>
+            <div [hidden]="!usersFormGroup.get('email')?.errors?.['email']" class="invalid-feedback">זה לא אימייל
+            </div>
+          </div>
+        </div><div class="row">
+            <div class="col-md-4 mb-3">
+              <label style="float:right;" for="email"><span class="text-danger">*</span>שם</label>
+              <input formControlName="name" class="form-control" [ngClass]="{
+                  'is-invalid': usersFormGroup.get('name')?.errors && usersFormGroup.get('name')?.dirty
+                }" required minlength="2"  name="email" id="email" type="email">
+              <div [hidden]="!usersFormGroup.get('email')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס אימייל
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label style="float:right;" for="ID"><span class="text-danger">*</span>ת.ז</label>
+              <input formControlName="ID3" class="form-control" [ngClass]="{
+                  'is-invalid': usersFormGroup.get('ID3')?.errors && usersFormGroup.get('ID3')?.dirty
+                }" required minlength="8" name="ID3" id="ID3" type="text">
+              <div [hidden]="!usersFormGroup.get('ID3')?.errors?.['pattern']" class="invalid-feedback">אנא דאג  שיהיו גם מספרים וגם אותיות
+              </div>
+              <div [hidden]="!usersFormGroup.get('ID3')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס סיסמא לפחות עם 8 תוים
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <label style="float:right;" for="ID"><span class="text-danger">*</span>סיסמא</label>
+              <input formControlName="ID" class="form-control" [ngClass]="{
+                  'is-invalid': usersFormGroup.get('ID')?.errors && usersFormGroup.get('ID')?.dirty
+                }" required minlength="8" name="ID" id="ID" type="password">
+              <div [hidden]="!usersFormGroup.get('ID')?.errors?.['pattern']" class="invalid-feedback">אנא דאג  שיהיו גם מספרים וגם אותיות
+              </div>
+              <div [hidden]="!usersFormGroup.get('ID')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס סיסמא לפחות עם 8 תוים
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <label style="float:right;" for="ID2"><span class="text-danger">*</span>אימות סיסמא</label>
+              <input style="float:right;" formControlName="ID2" class="form-control" [ngClass]="{
+                  'is-invalid': usersFormGroup.get('ID2')?.errors && usersFormGroup.get('ID2')?.dirty
+                }" required minlength="8" name="ID2" id="ID2" type="password">
+              <div [hidden]="!usersFormGroup.get('ID2')?.errors?.['pattern']" class="invalid-feedback">אנא דאג  שיהיו גם מספרים וגם אותיות
+              </div>
+              <div [hidden]="!usersFormGroup.get('ID2')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס סיסמא לפחות עם 8 תוים
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <!--Button for sending the details-->
+               <button type="button" [disabled]="usersFormGroup.invalid" (click)="submit()" class="btn">הרשם<i ></i></button>
+           </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+

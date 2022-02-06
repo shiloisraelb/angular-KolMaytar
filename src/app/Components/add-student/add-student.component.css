@@ -1,0 +1,8 @@
+.pos{
+    left: 30%;  
+  }
+@media screen and (max-width: 767px) {
+     .pos{
+    left: 0%;  
+  }
+}

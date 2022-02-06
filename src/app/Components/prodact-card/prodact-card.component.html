@@ -1,0 +1,12 @@
+<!--Show ticket structure YouTube video There Contact info  and name of show-->
+<div class="card">
+  <iframe   height="315"  [src]='getUrl()' width="100%" frameborder="0" allowfullscreen></iframe>
+  <p>{{showIns}} :{{prodacts.bandName}}</p>
+  <p class="conectionNumber">צור קשר:{{prodacts.conectionNumber}}</p>
+  <p *ngIf="getData" class="card">{{prodacts.instrument}}</p>
+  <!--Order button for navigation-->
+  <p *ngIf="shows"><button (click)="goToAddOrder()">הזמן</button></p>
+  <!--Show description when clicked -->
+  <p><button (click)="getInfomation()">לפרטים</button></p>
+</div>
+

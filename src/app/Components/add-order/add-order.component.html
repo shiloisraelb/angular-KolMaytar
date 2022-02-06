@@ -1,0 +1,52 @@
+<div class='box2' >
+  <!-- Calling a component of a show ticket-->
+  <app-prodact-card class="box" [showIns]="showIns" [shows]="shows" [prodacts]="prodacts"></app-prodact-card>
+  <div >
+    <!-- Call to the component of connection if not connected If logged in you will only see the invitation and if not logged in you will only see the login -->
+  <app-enter-custumer [hidden]="islogin"class ="box" [addinOrder]="addinOrder" ></app-enter-custumer>
+  </div >
+    <div  [hidden]="!islogin" ><!--class="box" [hidden]='!custumer.CustumerID.length'-->
+        <div class="col-12">
+          <!--Income form of order details time date and address-->
+          <form class="form-group" [formGroup]="OrderFormGroup" >
+            <div class="row">
+              <div class="col-md-7 mb-3">
+                <label for="Adres"   style="float: right;" ><span class="text-danger">*</span>כתובת</label>
+                <input formControlName="Adres" class="form-control" [ngClass]="{
+                    'is-invalid': OrderFormGroup.get('Adres')?.errors && OrderFormGroup.get('Adres')?.dirty
+                  }" required minlength="2"   name="Adres" id="Adres" type="Adres">
+                <div [hidden]="!OrderFormGroup.get('Adres')?.errors?.['minlength']" class="invalid-feedback">כתובת קצרה מידי
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7 mb-3">
+                  <label for="Dete"  style="float: right;" ><span class="text-danger">*</span>תאריך</label>
+                  <input formControlName="Dete" value="יום/חודש/שנה" class="form-control" [ngClass]="{
+                      'is-invalid': OrderFormGroup.get('Dete')?.errors && OrderFormGroup.get('Dete')?.dirty
+                    }" required  name="Dete" id="Dete" type="date">
+                  <div [hidden]="!OrderFormGroup.get('Dete')?.errors?.['required']" class="invalid-feedback"> הכנס תאריך 
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7 mb-3">
+                  <label for="time"   style="float: right;" ><span class="text-danger">*</span>שעה</label>
+                  <input formControlName="time" class="form-control" [ngClass]="{
+                      'is-invalid': OrderFormGroup.get('time')?.errors && OrderFormGroup.get('time')?.dirty
+                    }" required  name="time" id="time" type="time">
+                  <div [hidden]="!OrderFormGroup.get('time')?.errors?.['required']" class="invalid-feedback">אנא הכנס שעה
+                  </div>
+                </div>
+              </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                  <!-- A button that submit  the form-->
+                   <button type="button" [disabled]="OrderFormGroup.invalid" (click)="AddOrder()" class="btn">הזמן<i class="fa fa-plus"></i></button>
+               </div>
+            </div>
+          </form>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,40 @@
+<div>
+    <div>
+      {{displayMonth}}
+    </div>
+    <div><!-- get For month,get return month, give current month-->
+      <button  (click)="setCurrentMonth()" class="btn btn-lg btn-primary btn-block" >היום</button>
+      <button  (click)="decreaseMonth()" class="btn btn-lg btn-primary btn-block">חודש הקודם<i class="fa fa-arrow-left" ></i></button>
+      <button  (click)="increaseMonth()" class="btn btn-lg btn-primary btn-block" >חודש הבא<i class="fa fa-arrow-right" ></i></button>
+    </div>
+  </div>
+  <!--table that bulde the calender-->
+  <table class='calendar-table' *ngIf="calendar">
+    <thead>
+      <tr>
+        <th>ראשון</th>
+        <th>שני</th>
+        <th>שלישי</th>
+        <th>רביעי</th>
+        <th>חמישי</th>
+        <th>שישי</th>
+        <th>שבת</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of calendar | chunk: 7; let i = index">
+        <td class="calendar-day" [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}" *ngFor="let c of row; let j = index">
+          <div class="calendar-day-header" [ngClass]="{'blue-date': c.isToday,'red-date':c.isBisy}" ><strong (click)="isDate(c.date)">{{c.date.getDate()}}</strong> <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> {{monthNames[c.date.getMonth()]}}</strong></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Table of tasks for the same date-->
+  <table *ngIf="myDatsCon!= null" class="table table-bordered">
+    <!--add for each task (order or student) in the date-->
+    <tr *ngFor="let item of myDatsCon; let i = index">
+       <td>{{getHouer(myDatsCon[i].date)}} : {{getSubject(myDatsCon[i])}}</td>
+       <!--delete rhe task-->
+       <td><button  type="button" class="btn btn-outline-danger" (click)="removOrderStudent(myDatsCon[i].date)"> <i  class="fa fa-trash"></i> </button></td>
+    </tr>
+  </table>

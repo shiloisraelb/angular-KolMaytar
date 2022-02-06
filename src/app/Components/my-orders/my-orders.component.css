@@ -1,0 +1,11 @@
+.tdtext{
+    margin-top:50%;
+}
+.pos{
+    left: 36%;  
+  }
+@media screen and (max-width: 767px) {
+     .pos{
+    left: 40%;  
+  }
+}

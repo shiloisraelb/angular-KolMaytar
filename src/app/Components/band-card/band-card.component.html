@@ -1,0 +1,13 @@
+<!--If there are no shows you will see this animation-->
+<ng-container *ngIf="bands==null">
+    <img src="{{LOGO1}}"  class="my">
+    <h2>אנא חכה שהתוצאות יעלו</h2>
+</ng-container>
+<!--Band card structure For each wedding band-->
+<!--for each show on the list you will build a ticket-->
+<div  *ngFor="let band of bands,let i = index">
+    <!--YouTube video-->
+    <iframe   height="315" class="card" [src]='getUrl(bands[i].url)' width="100%" frameborder="0" allowfullscreen></iframe>
+    <!--Explanation and description-->
+    <div class="card"><p *ngFor="let BD of ArangText(bands[i].bendData),let k = index">{{ArangText(bands[i].bendData)[k]}}</p></div>
+</div>

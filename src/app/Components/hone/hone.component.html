@@ -1,0 +1,12 @@
+
+<!--title -->
+<img class="titel" src="{{titel}}">
+<div class="clearfix">
+ <!--Photo for shows-->
+ <img  [ngClass]="{'box': B1==1,'box2': B1==2,'box3': B1==3}" (mouseover)="changB1()"  src="{{Myprodaction}}">
+ <!--Photo for school-->
+ <img  [ngClass]="{'box': B2==1,'box2': B2==2,'box3': B2==3}" (mouseover)="changB2()" src="{{Myschool}}">
+  <!--explanation-->  
+  <h2  *ngIf="B1==3">בית ספר ללימוד נגינה ותאוריה של המוזיקה</h2>
+  <h2  *ngIf="B1==2">הזמנה של מופעי מוזיקה לארועים או מופעי בידור</h2>
+</div>

@@ -1,0 +1,10 @@
+<p class="log">
+    <!-- A search will appear when the icon is clicked-->
+    <i class="fa fa-search" (click)="setSerch()">חיפוש לפי שם</i>
+    <input #searchTerm  [hidden]="!serch" class="form-control"  type="text">
+</p>
+<h2>רשימת מופעים</h2>
+<div class="clearfix">
+<!--Build show tickets as show format(heve a rout to Order component) on each instrument product on the list -->
+<app-prodact-card class="box" *ngFor="let prodact of prodacts,let i = index" [showIns]="showIns" [shows]="shows" [prodacts]="prodacts[i]"></app-prodact-card>
+</div>

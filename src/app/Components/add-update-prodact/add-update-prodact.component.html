@@ -1,0 +1,83 @@
+<div style="position: relative;" class="pos">
+    <div class="row">
+        <div class="col-md-4 mb-3">
+          <!-- Button for selecting an show or lesson-->
+            <p style="float: right;">סוג מוצר</p>
+          <input type="radio" id="show" (click)="setsubmitS()" name="fav_Prod" >
+                <label for="show">מופעים</label>
+             <input type="radio" id="school" (click)="setsubmitI()"  name="fav_Prod" >
+                 <label for="school">שיעור כלי</label>
+         </div>
+      </div>
+      <div class="row">
+        <!-- Button for selecting an  Update or add-->
+        <div class="col-md-4 mb-3">
+            <p style="float: right;">סוג פעולה</p>
+          <input type="radio" id="update" (click)="setsubmitA()" name="fav_action" >
+                <label for="show">הוסף</label>
+             <input type="radio" id="add" (click)="setsubmitU()"  name="fav_action" >
+                 <label for="school"> עדכן</label>
+         </div>
+      </div>
+    <div class="row">
+    <div class="col-12">
+      <form class="form-group"  [formGroup]="ProdactFormGroup" >
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <!--Form for entering product name and gets the data by submit the button -->
+              <label style="float: right;" for="bandName"><span class="text-danger">*</span>שם המוצר</label>
+              <input formControlName="bandName" class="form-control" [ngClass]="{
+                  'is-invalid': ProdactFormGroup.get('bandName')?.errors && ProdactFormGroup.get('bandName')?.dirty
+                }" required minlength="2"  name="bandName" id="bandName" type="text">
+              <div [hidden]="!ProdactFormGroup.get('bandName')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס שם מוצר
+              </div>
+            </div>
+            <div class="col-md-4 mb-3"> 
+                <button type="button" [hidden]="issadd" [disabled]="ProdactFormGroup.get('bandName')?.errors?.['minlength']" (click)="serchProd()" class="btn">תן את המוצר<i class="fa fa-arrow-left" ></i></button>
+            </div>
+          </div>
+          <!--entering product details: dacription ,name,yoytube url and contact data-->
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label style="float: right;" for="conectionNumber"><span class="text-danger">*</span>טלפון</label>
+              <input formControlName="conectionNumber" class="form-control" [ngClass]="{
+                  'is-invalid': ProdactFormGroup.get('conectionNumber')?.errors && ProdactFormGroup.get('conectionNumber')?.dirty
+                }" required minlength="8" name="conectionNumber" id="conectionNumber" type="number">
+              <div [hidden]="!ProdactFormGroup.get('conectionNumber')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס סיסמא לפחות עם 8 תוים
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <label style="float: right;" for="instrument"><span class="text-danger">*</span>כלי נגינה/הסבר על המופע</label>
+              <input formControlName="instrument" class="form-control" [ngClass]="{
+                  'is-invalid': ProdactFormGroup.get('instrument')?.errors && ProdactFormGroup.get('instrument')?.dirty
+                }" required minlength="2" name="instrument" id="instrument" type="text">
+              <div [hidden]="!ProdactFormGroup.get('instrument')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס הסבר או שם כלי
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <label style="float: right;" for="Link"><span class="text-danger">*</span> קישור לסרט</label>
+              <input formControlName="link" class="form-control" [ngClass]="{
+                  'is-invalid': ProdactFormGroup.get('link')?.errors && ProdactFormGroup.get('link')?.dirty
+                }" required minlength="8" name="ID2" id="ID2" type="text">
+              <div [hidden]="!ProdactFormGroup.get('link')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס סיסמא לפחות עם 8 תוים
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <!--Update -->
+               <button type="button" [hidden]="!issadd" [disabled]="ProdactFormGroup.invalid" (click)="submit()" class="btn">הוסף<i ></i></button>
+           </div>
+           <div class="col-md-4 mb-3">  
+             <!--add-->     
+            <button type="button" [hidden]="issadd" [disabled]="ProdactFormGroup.invalid" (click)="Udate()" class="btn"> עדכן</button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+</div>

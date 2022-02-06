@@ -1,0 +1,22 @@
+<div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    
+    <a href="" class="w3-bar-item w3-button"> עמוד הבית</a>
+    <a (click)="showShows()" class="w3-bar-item w3-button"> ארוע/מופע </a>
+   
+      <ng-container *ngIf="shows">
+      <a href="wedings" class="w3-bar-item w3-button">להקות חתונה</a>
+      <a href="shows" class="w3-bar-item w3-button">מופעים</a>
+    </ng-container>
+   
+    <a (click)="showSchool()" class="w3-bar-item w3-button">בית ספר </a>
+    <ng-container *ngIf="school"> 
+      <a href="addStu" class="w3-bar-item w3-button">הזמן שיעור</a>
+      <a href="InstromentList" class="w3-bar-item w3-button">  כלי נגינה  </a>
+    </ng-container>
+    
+  </div>
+  <ng-container *ngIf="Admin"> 
+    <a href="MyProd" class="w3-bar-item w3-button"> ניהול מוצרים</a>
+    <a href="CustList" class="w3-bar-item w3-button">  ניהול  לקוחות</a>
+    <a href="Calender" class="w3-bar-item w3-button">  יומן עבודה</a>
+  </ng-container>

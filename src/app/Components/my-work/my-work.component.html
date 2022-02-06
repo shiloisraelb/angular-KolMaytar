@@ -1,0 +1,36 @@
+<div class="row"><!--title-->
+  <h1 class="col mb-1" style="position: relative;left:60%;">רשימת הלקוחות שלי</h1>
+  <p div class="col-md-7 mb-3" class="log">
+    <!-- A search will appear when the icon is clicked-->
+    <i class="fa fa-search" style="float: right;"  >חיפוש לפי שם</i>
+    <input #searchTerm  class="col-md-4 mb-3"   style="float: right;" type="text">
+  </p>
+</div>
+<!--Customer table-->
+<div class="row" *ngFor="let item of custumers;let i = index" >
+        <!-- Add a column for each customer in the list-->
+        <div class="col mb-1" >{{i+1}}</div>
+        <div class="col mb-1" >{{custumers[i].name}}</div>
+        <div class="col mb-1" >{{custumers[i].email}}</div>
+        <!--Show custumer Orders-->
+        <div class="col mb-1"><button  type="button" class="btn btn-lg btn-primary btn-block" (click)=" show(i)">
+            <i  class="fa fa-arrow-left">הזמנות</i>
+          </button>
+        </div>
+        <!--Delete client button-->
+        <div class="col mb-1"><button  type="button" class="btn btn-outline-danger" (click)="removCust(custumers[i].custumerID)">
+            <i  class="fa fa-trash">מחק</i>
+          </button>
+        </div>
+        <ng-container *ngIf="isshow[i]">
+          <!--if the show button has clicte sho the custumer Orders-->
+        <app-custumer-card [custumer]="custumers[i]"></app-custumer-card>
+    </ng-container>
+</div>
+
+    
+ <!--Reload this Page -->
+<div class="Row"><button  type="button" class="btn btn-lg btn-primary btn-block" (click)="refress()">
+    <i  class="fa fa-arrow-left">רענן רשימה</i>
+  </button>
+</div>

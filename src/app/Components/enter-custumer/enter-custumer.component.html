@@ -1,0 +1,38 @@
+<div class="row" style="position: relative;" class="pos">
+    <div class="col-12" >
+      <!--Password and email-->
+      <form [formGroup]="userslogFormGroup" class="form-group" >
+        <div class="row">
+          <div class="col-md-7 mb-3">
+            <label  style="float: right;" for="email"><span class="text-danger">*</span>אמייל</label>
+            <input  formControlName="email" class="form-control" [ngClass]="{
+                'is-invalid':userslogFormGroup.get('email')?.errors && userslogFormGroup.get('email')?.dirty
+              }" required minlength="2"  required email name="email" id="email" type="email">
+            <div [hidden]="!userslogFormGroup.get('email')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס אימייל
+            </div>
+            <div [hidden]="!userslogFormGroup.get('email')?.errors?.['email']" class="invalid-feedback">זה לא אימייל
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 mb-3">
+              <label  style="float: right;" for="ID"><span  class="text-danger">*</span>סיסמא</label>
+              <input formControlName="ID" class="form-control" [ngClass]="{
+                  'is-invalid': userslogFormGroup.get('ID')?.errors && userslogFormGroup.get('ID')?.dirty
+                }" required minlength="8" name="ID" id="ID" type="password">
+              <div [hidden]="!userslogFormGroup.get('ID')?.errors?.['pattern']" class="invalid-feedback">אנא דאג  שיהיו גם מספרים וגם אותיות
+              </div>
+              <div [hidden]="!userslogFormGroup.get('ID')?.errors?.['minlength']" class="invalid-feedback">אנא הכנס סיסמא לפחות עם 8 תוים
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <!--Send a request - Login request-->
+               <button type="button" [disabled]="userslogFormGroup.invalid" (click)="submit()" class="btn">התחבר<i class="fa fa-plus"></i></button>
+               <a href="AddCust">משתמש חדש</a>
+           </div>
+        </div>
+      </form>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+
+<div class="row" style="position: relative;" class="pos">
+    <div class="col-12">
+      <!--Student details Name ID of a musical instrument that wants to study-->
+      <form   class="form-group" [formGroup]="StudentFormGroup" >
+        
+        <div class="row" >
+            
+            <div class="col-md-7 mb-3">
+              <label for="Adres"   style="float: right;" ><span class="text-danger">*</span>שם התלמיד </label>
+              <input  formControlName="name" class="form-control" [ngClass]="{
+                  'is-invalid': StudentFormGroup.get('name')?.errors && StudentFormGroup.get('name')?.dirty
+                }" required minlength="2"   name="name" id="Adres" type="name">
+              <div [hidden]="!StudentFormGroup.get('name')?.errors?.['minlength']" class="invalid-feedback"> תן שם עם יותר אותיות
+              </div>
+            </div>
+          </div>
+        <div class="row" >
+            <div class="col-md-7 mb-3">
+              <label for="Adres"   style="float: right;" ><span class="text-danger">*</span>ת.ז </label>
+              <input formControlName="ID" class="form-control" [ngClass]="{
+                  'is-invalid': StudentFormGroup.get('ID')?.errors && StudentFormGroup.get('ID')?.dirty
+                }" required   name="ID" id="ID" type="ID">
+              <div [hidden]="!StudentFormGroup.get('ID')?.errors?.['minlength']" class="invalid-feedback"> ת.ז קצרה מדי
+              </div>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-md-7 mb-3">
+            <label for="instrument"   style="float: right;" ><span class="text-danger">*</span>כלי נגינה</label>
+            <select formControlName="instrument" class="form-control" [ngClass]="{
+                'is-invalid': StudentFormGroup.get('instrument')?.errors && StudentFormGroup.get('instrument')?.dirty
+              }" required   name="instrument" id="instrument" type="select">
+            <option *ngFor="let item of myInstrunent">{{item}}</option>
+            </select>
+            <div [hidden]="!StudentFormGroup.get('instrument')?.errors?.['required']" class="invalid-feedback">  אנא בחר כלי
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 mb-3">
+              <label for="Dete"  style="float: right;" ><span class="text-danger">*</span>תאריך</label>
+              <input formControlName="Dete" value="יום/חודש/שנה" class="form-control" [ngClass]="{
+                  'is-invalid': StudentFormGroup.get('Dete')?.errors && StudentFormGroup.get('Dete')?.dirty
+                }" required  name="Dete" id="Dete" type="date">
+              <div [hidden]="!StudentFormGroup.get('Dete')?.errors?.['required']" class="invalid-feedback"> הכנס תאריך 
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 mb-3">
+              <label for="time"   style="float: right;" ><span class="text-danger">*</span>שעה</label>
+              <input formControlName="time" class="form-control" [ngClass]="{
+                  'is-invalid': StudentFormGroup.get('time')?.errors && StudentFormGroup.get('time')?.dirty
+                }" required  name="time" id="time" type="time">
+              <div [hidden]="!StudentFormGroup.get('time')?.errors?.['required']" class="invalid-feedback">אנא הכנס שעה
+              </div>
+            </div>
+          </div>
+        <div class="row">
+          <!--submit details button-->
+            <div class="col-md-4 mb-3">
+               <button type="button" [disabled]="StudentFormGroup.invalid" (click)="AddStudent()" class="btn"> הזמן שיעור<i class="fa fa-plus"></i></button>
+           </div>
+        </div>
+      </form>
+    </div>
+</div>
